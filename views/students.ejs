@@ -9,54 +9,52 @@
 </head>
 <body>
     <main>
-    <%- include('partials/nav') %>
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4><b>Students</b></h4>
-            </div>
-            <div class="table-responsive">
-                <%if(users[0]){%>
-                <table class="table table-bordered table-hover">
-                    <thead id="stockNameRow">
-                        <%const arrH = Object.keys(users[0]);%>
-                        <tr>
-                            <th>
-                                Serial
-                            </th>
-                            <%arrH.forEach((head)=>{%>
-                            <th style="color: rgb(95, 98, 95);">
-                                <h4><%=head%></h4>
-                            </th>
-                            <%})%>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                    <%var a=1%>
-                    <%users.forEach((user)=>{%>
-                        <%const arr = Object.values(user); %>
-                        
-                        <tr>
-                            <td>
-                                <%=a%>
-                            </td>
-                            <%arr.forEach((data)=>{%>
-                            <td>
-                                <h5> <b><%=data%></b></h5>
-                            </td>
-                            <%})%>
-                        </tr>
-                     <%a++})%>
-                    </tbody>
-                </table>
-                <%}else{%>
-                    <h1>Empty</h1>
-                <%}%>
+        <%- include('partials/nav') %>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><b>Students</b></h4>
+                </div>
+                <div class="table-responsive">
+                    <%if(users[0]){%>
+                    <table class="table table-bordered table-hover">
+                        <thead id="stockNameRow">
+                            <%const arrH = Object.keys(users[0]);%>
+                            <tr>
+                                <th>
+                                    Serial
+                                </th>
+                                <%arrH.forEach((head)=>{%>
+                                <th style="color: rgb(95, 98, 95);">
+                                    <h4><%=head%></h4>
+                                </th>
+                                <%})%>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <%var a=1%>
+                        <%users.forEach((user)=>{%>
+                            <%const arr = Object.values(user); %>
+                            <tr>
+                                <td>
+                                    <%=a%>
+                                </td>
+                                <%arr.forEach((data)=>{%>
+                                <td>
+                                    <h5> <b><%=data%></b></h5>
+                                </td>
+                                <%})%>
+                            </tr>
+                        <%a++})%>
+                        </tbody>
+                    </table>
+                    <%}else{%>
+                        <h1>Empty</h1>
+                    <%}%>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
     </main>
     <%- include('partials/footer') %>
 </body>

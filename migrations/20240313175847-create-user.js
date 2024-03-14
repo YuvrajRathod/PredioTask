@@ -36,7 +36,6 @@ module.exports = {
           notNull:{msg:'Student must have a DOB'},
           notEmpty:{msg:'DOB must not be empty'}
         }
-  
       },
       className: {
         type:DataTypes.STRING,
@@ -45,7 +44,6 @@ module.exports = {
           notNull:{msg:'Student must have a Class'},
           notEmpty:{msg:'Class must not be empty'}
         }
-  
       },
       subjectsList: {
         type:DataTypes.TEXT,
@@ -54,22 +52,15 @@ module.exports = {
           notNull:{msg:'Student must have a Subjects'},
           notEmpty:{msg:'Subjects must not be empty'}
         }
-  
       },
       subjectsMarks: {
         type:DataTypes.TEXT,
-      
-  
       },
       subjectsGrade: {
         type:DataTypes.TEXT,
-     
-  
       },
       subjectsPer: {
         type:DataTypes.TEXT,
-  
-  
       },
       overallGrade: {
         type:DataTypes.STRING,

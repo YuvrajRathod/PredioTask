@@ -1,49 +1,33 @@
 const {user}=require('../models');
 
 module.exports.home = (req, res) => {
-
     try {
-    res.render("home");
-      
+    res.render("home");     
     } catch (error) {
       console.log(error);
     }
-   
   }
-
-
   module.exports.students = async(req, res) => {
-
     try {
       const students=await user.findAll();
       let users=[];
-    
       students.forEach(user => {
            users.push(user.dataValues);
       });
-   
     res.render("students",{users});
   }
   catch (error) {
       console.log(error);
     }
-   
   }
-
   module.exports.updates = async(req, res) => {
-
     try {
-    
-
-    res.render("updates");
-      
+      res.render("updates");    
     } catch (error) {
       console.log(error);
-    }
-   
+    }  
   }
   module.exports.updateStudent = async(req, res) => {
-
     try {
     const studentID=req.body.studentID;
     const student=await user.findOne({where: {studentID}});
@@ -56,14 +40,10 @@ module.exports.home = (req, res) => {
       flag=true;
     var marksList = JSON.parse(marksList);
     }
-    
-
-    res.render("addMarks",{subjectArray,studentID,flag,marksList});
-      
+    res.render("addMarks",{subjectArray,studentID,flag,marksList}); 
     } catch (error) {
       console.log(error);
-    }
-   
+    }  
   }
   module.exports.add = async(req, res) => {
 
@@ -78,11 +58,8 @@ module.exports.home = (req, res) => {
       for(let i=0; i<subjectArray.length; i++) {
         subjectArray[i]=subjectArray[i].trim();
       }
-      
-  
       console.log(subjectArray);
       var subjectsList = JSON.stringify(subjectArray);
-
       const studentName=fName.trim()+" "+lName.trim();
       const subjectsMarks="";
       const subjectsGrade="";
@@ -93,8 +70,7 @@ module.exports.home = (req, res) => {
       
     } catch (error) {
       console.log(error);
-    }
-   
+    }   
   }
   function getGrade(per)
   {
@@ -106,7 +82,6 @@ module.exports.home = (req, res) => {
     return "F";
   }
   module.exports.updateStudentMarks = async(req, res) => {
-
     try {
       const studentID=req.body.studentID;
       const student=await user.findOne({where: {studentID}});
@@ -148,9 +123,9 @@ module.exports.home = (req, res) => {
       res.redirect('/students');
     } catch (error) {
       console.log(error);
-    }
-   
+    } 
   }
+
   module.exports.deleteStudent = async(req, res) => {
   try {
     res.render("deleteStudent");
@@ -192,7 +167,6 @@ module.exports.home = (req, res) => {
           if(className)search['className'] = className;
           console.log(search);
           let users=[];
-    
           const students=await user.findAll({where:search});
           students.forEach(user => {
            users.push(user.dataValues);
@@ -230,15 +204,14 @@ module.exports.home = (req, res) => {
               console.log(error);
             }
             }
-
             module.exports.bonus = async(req, res) => {
               try {
                 res.render("bonus");
               } catch (error) {
                 console.log(error);
               }
-              }
-              module.exports.avgClass = async(req, res) => {
+            }
+            module.exports.avgClass = async(req, res) => {
                 try {
                   className=req.body.className;
                   const students = await user.findAll();
@@ -256,12 +229,12 @@ module.exports.home = (req, res) => {
                 } catch (error) {
                   console.log(error);
                 }
-                }
-                module.exports.avgMarks = async(req, res) => {
+            }
+            
+            module.exports.avgMarks = async(req, res) => {
                   try {
                     studentID=req.body.studentID;
                     const students = await user.findOne({where:{studentID}});
-
                     var sumO=0;
                     var sumF=0;
                     var count=0;
@@ -273,7 +246,6 @@ module.exports.home = (req, res) => {
                 })
                 const avgO=(sumO/count).toFixed(2);
                 const avgF=(sumF/count).toFixed(2);
-
                 res.send({
                   "Obtained Average Marks": avgO,
                   "Full Average Marks": avgF
@@ -281,4 +253,4 @@ module.exports.home = (req, res) => {
                   } catch (error) {
                     console.log(error);
                   }
-                  }
+             }
