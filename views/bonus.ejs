@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management Admin Page</title>
+    <link rel="stylesheet" href="/styles/update.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+    <main>
+        <h2>Average of Class</h2>
+        <form action="/avgClass" method="POST" id="studentForm">
+
+            <label for="className">Class:</label>
+            <input type="text" id="className" name="className" required><br><br>     
+
+            <button type="submit">Calculate Average</button>
+        </form>
+        <h2>Average Marks of Student</h2>
+        <form action="/avgMarks" method="POST" id="marksForm">
+            <label for="studentID">studentID:</label>
+            <input type="number" id="studentID" name="studentID" required><br><br>
+            <button type="submit">Average Marks</button>
+        </form>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>
